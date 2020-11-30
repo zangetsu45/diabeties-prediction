@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>Diabetes Predictor</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="static/css/grid.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<header>
+  <nav>
+    <div class="row">
+          <h1><a class="navbar-brand">Diabetes Predictor</a></h1>
+        <ul class="main-nav js--main-nav">
+            <li><a href="https://github.com/Uttam580/diabetes_prediction_api">Medium Blog</a></li>
+            <li><a href="https://github.com/Uttam580/diabetes_prediction_api">Git</a></li>
+        </ul>
+    </div>
+</nav>
+</header>
+
+<body>
+ <div class="login">
+	<h4>Enter below details to get result</h4>
+    <form action="{{ url_for('predict')}}"method="post">
+      <input type="text" name="Pregnancies" placeholder="Pregnancies" required="required" />
+        <input type="text" name="Glucose Level" placeholder="Glucose Level" required="required" />
+        <input type="text" name="BloodPressure" placeholder="BloodPressure" required="required" />
+        <input type="text" name="SkinThickness" placeholder="SkinThickness" required="required" />
+        <input type="text" name="Insulin" placeholder="Insulin" required="required" />
+        <input type="text" name="BMI" placeholder="BMI" required="required" />
+        <input type="text" name="Age" placeholder="Age" required="required" />
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+   <br>
+   <br>
+   {{ prediction_text }}
+  </div>
+   <div class="Prediction-mass">
+	  <h4>Upload file to get result</h4>
+    <br>
+    <form action="/download" method=post enctype=multipart/form-data>
+      <input type=file name=file>
+      <input type=submit value=Download>
+    </form>
+  </div>
+</body>
+</html>
